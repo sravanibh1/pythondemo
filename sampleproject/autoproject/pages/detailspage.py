@@ -1,7 +1,6 @@
 from selenium.webdriver import ActionChains
 from sampleproject.autoproject.pages.basepage import BasePage
 from selenium.webdriver.support.select import Select
-import openpyxl
 
 
 class DetailsPage(BasePage):
@@ -9,7 +8,6 @@ class DetailsPage(BasePage):
     email_xpath = "//input[@id = 'email']"
     phone_xpath = "//input[@id = 'phone']"
     address_xpath = "//textarea[@id = 'textarea']"
-
     country_dd_xpath = "//select[@id = 'country']"
     colors_dd_xpath = "//select[@id = 'colors']"
     date_box_xpath = "//input[@id = 'datepicker']"
