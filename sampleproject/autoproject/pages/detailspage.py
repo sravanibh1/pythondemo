@@ -131,3 +131,5 @@ class DetailsPage(BasePage):
 
     def fromgit(self):
         print("this is added in git")
+        print("this is added in pycharm")
+
