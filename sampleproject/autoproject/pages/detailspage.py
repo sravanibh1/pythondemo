@@ -129,3 +129,5 @@ class DetailsPage(BasePage):
         actions = ActionChains(self.driver)
         actions.drag_and_drop_by_offset(slider, x, y).perform()
 
+    def fromgit(self):
+        print("this is added in git")
