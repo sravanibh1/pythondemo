@@ -1,8 +1,6 @@
 import time
-
 import openpyxl
 from selenium import webdriver
-
 from sampleproject.autoproject.pages.basepage import BasePage
 from sampleproject.autoproject.pages.detailspage import DetailsPage
 
@@ -15,9 +13,7 @@ def driver_setup():
     return driver
 
 
-def filling():
-    driver = driver_setup()
-    dp = DetailsPage(driver)
+def excel_data():
     workbook = openpyxl.load_workbook("C:\\Users\\Sravani Bhogadi\\Desktop\\Book1.xlsx")
     sheet = workbook.active
     for row in range(2, sheet.max_row + 1):
@@ -32,31 +28,35 @@ def filling():
         bookname = sheet.cell(row=row, column=9).value
         subject = sheet.cell(row=row, column=10).value
         product = sheet.cell(row=row, column=11).value
-        search = sheet.cell(row=row, column=12).value
-        dp.enter_name(name)
-        dp.enter_email(email)
-        dp.enter_phone(phone)
-        dp.enter_address(address)
-        dp.select_gender(gender)
-        dp.select_day(day)
-        dp.enter_country(country)
-        dp.enter_colour(color)
-        dp.enter_date('October', '2024', '2')
-        dp.get_price(bookname)
-        dp.get_author(subject)
-        # dp.click_product(product)
-        dp.search(search)
-        time.sleep(2)
-        dp.alerts()
-        dp.double()
-        dp.drag_drop()
-        time.sleep(2)
-        dp.slider(50, 0)
-        time.sleep(5)
+        search_value = sheet.cell(row=row, column=12).value
+        filling(name, email, phone, address, gender, country, day, color, bookname, subject, product, search_value)
 
+
+def filling(name, email, phone, address, gender, country, day, color, bookname, subject, product, search):
+    driver = driver_setup()
+    dp = DetailsPage(driver)
+    dp.enter_name(name)
+    dp.enter_email(email)
+    dp.enter_phone(phone)
+    dp.enter_address(address)
+    dp.select_gender(gender)
+    dp.enter_country(country)
+    dp.select_day(day)
+    dp.enter_colour(color)
+    dp.enter_date('October', '2024', '2')
+    dp.get_price(bookname)
+    dp.get_author(subject)
+    dp.click_product(product)
+    dp.search(search)
+    dp.alerts()
+    dp.double()
+    dp.drag_drop()
+    dp.slider(50, 0)
+    driver.quit()
 
 # filling('male',  'monday')
 # filling('female', 'sunday')
 
 
-filling()
+excel_data()
+

@@ -1,3 +1,4 @@
+import openpyxl
 from selenium.webdriver import ActionChains
 from sampleproject.autoproject.pages.basepage import BasePage
 from selenium.webdriver.support.select import Select
@@ -129,7 +130,4 @@ class DetailsPage(BasePage):
         actions = ActionChains(self.driver)
         actions.drag_and_drop_by_offset(slider, x, y).perform()
 
-    def fromgit(self):
-        print("this is added in git")
-        print("this is added in pycharm")
 
